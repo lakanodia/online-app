@@ -13,8 +13,8 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule, // Add AuthModule
-    AuthRoutingModule // Add AuthRoutingModule
+    AuthModule,
+    AuthRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
