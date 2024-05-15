@@ -1,18 +1,18 @@
 <div class="signup-container">
-    <div class="signup-form">
-      <h2>Sign Up</h2>
-      <form (ngSubmit)="signup()" #signupForm="ngForm">
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" [(ngModel)]="email" required>
-        </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" [(ngModel)]="password" required>
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-      <p>Already have an account? <a routerLink="/login">Login</a></p>
-    </div>
+  <div class="signup-form">
+    <h2>Sign Up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div>
+        <label for="email">email:</label>
+        <input type="text" id="emaill" formControlName="email">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
   </div>
+</div>
   
