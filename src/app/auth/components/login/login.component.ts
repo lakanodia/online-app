@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
           response => {
             console.log('Sign in successful:', response);
             // Store the token in localStorage or handle as required
-            this.authService.setToken(response.token);
+            this.authService.setToken(response.access_token);
             // Redirect to dashboard or home page after successful sign in
             this.router.navigate(['/dashboard']); // Adjust route as needed
           },
