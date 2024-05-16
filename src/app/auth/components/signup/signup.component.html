@@ -3,16 +3,34 @@
     <h2>Sign Up</h2>
     <form [formGroup]="signupForm" (ngSubmit)="signup()">
       <div>
-        <label for="email">email:</label>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName">
+      </div>
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
         <input type="text" id="emaill" formControlName="email">
       </div>
       <div>
         <label for="password">Password:</label>
         <input type="password" id="password" formControlName="password">
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a routerLink="/login">Login</a></p>
   </div>
 </div>
-  
+
+<!-- "age": 1,
+"email": "string@gmail.com",
+"password": "stringst",
+"address": "string",
+"phone": "+995557665544",
+"zipcode": "string",
+"avatar": "1232",
+"gender": "MALE"
+   -->
