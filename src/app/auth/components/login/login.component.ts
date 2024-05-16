@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,34 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder){
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router){
 
   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  login(): void {
+
+  signIn(): void {
     if (this.loginForm.valid) {
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
-      if (this.authService.login(username, password)) {
-        // Redirect to dashboard after successful login
-      } else {
-        alert('Invalid username or password');
-      }
-    } else {
-      alert('Please enter username and password');
+      this.authService.signIn(this.loginForm.value)
+        .subscribe(
+          response => {
+            console.log('Sign in successful:', response);
+            // Store the token in localStorage or handle as required
+            this.authService.setToken(response.token);
+            // Redirect to dashboard or home page after successful sign in
+            this.router.navigate(['/dashboard']); // Adjust route as needed
+          },
+          error => {
+            console.error('Sign in failed:', error);
+            // Handle error, e.g., display error message
+          }
+        );
     }
   }
 }
