@@ -34,10 +34,17 @@ export class AuthService {
   }
 
   // Method to check if user is logged in
-  getIsLoggedIn(): boolean {
-    return this.isLoggedIn;
-  }
+  // getIsLoggedIn(): boolean {
+  //   return this.isLoggedIn;
+  // }
 
+
+  getIsLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    const isLoggedIn = !!token;
+    console.log('IsLoggedIn:', isLoggedIn);
+    return isLoggedIn;
+  }
   getToken(): any {
     return localStorage.getItem('token');
   }
@@ -50,18 +57,12 @@ export class AuthService {
     localStorage.removeItem('token');
     this.isLoggedIn = false;
   }
-    
-
-  login(username: string, password: string): boolean {
-    // You can implement your authentication logic here
-    if (username === 'user' && password === 'password') {
-      this.isLoggedIn = true;
-      return true;
-    }
-    return false;
-  }
-
   isAuthenticated(): boolean {
     return this.isLoggedIn;
+  }
+
+  removeToken(): void {
+    // Remove token from localStorage
+    localStorage.removeItem('token');
   }
 }

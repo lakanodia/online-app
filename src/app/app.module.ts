@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthGuard } from './auth/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AuthModule,
-    AuthRoutingModule,
-    HttpClientModule
+    DashboardModule
   ],
-  providers: [],
+  providers: [AuthGuard], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
