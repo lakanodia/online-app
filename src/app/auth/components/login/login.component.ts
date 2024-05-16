@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit{
             // Handle error, e.g., display error message
           }
         );
+    }else{
+      alert("ფორმა არავალიდურია !");
     }
   }
 }
