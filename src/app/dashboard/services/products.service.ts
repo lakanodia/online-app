@@ -11,13 +11,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(pageIndex: number = 1, pageSize: number = 10): Observable<IProduct[]> {
-    // Create an instance of HttpParams to handle URL parameters
-    let params = new HttpParams();
-    params = params.set('page_index', pageIndex.toString());
-    params = params.set('page_size', pageSize.toString());
-
-    // Make the GET request with the URL parameters
-    return this.http.get<IProduct[]>(this.apiUrl, { params });
+  getProducts(pageIndex: number, pageSize: number): Observable<IProduct[]> {
+    const url = `${this.apiUrl}?page_index=${pageIndex}&page_size=${pageSize}`;
+    return this.http.get<IProduct[]>(url);
   }
 }

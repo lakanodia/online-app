@@ -8,6 +8,7 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthGuard } from './auth/guard/auth.guard';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthGuard } from './auth/guard/auth.guard';
     AppRoutingModule,
     HttpClientModule,
     AuthModule,
-    DashboardModule
+    DashboardModule,
+    FormsModule
   ],
   providers: [AuthGuard], 
   bootstrap: [AppComponent]

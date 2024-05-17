@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProductCatalogComponent } from './components/product-catalog/product-catalog/product-catalog.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { ProductCatalogComponent } from './components/product-catalog/product-ca
   ],
   imports: [
     DashboardRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [DashboardComponent] 
 })

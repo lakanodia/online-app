@@ -1,11 +1,48 @@
-<div *ngFor="let product of products">
-    <div>
-      <img [src]="product.images" alt="{{ product.name }}">
-      <h3>{{ product.name }}</h3>
-      <p>Category: {{ product.category }}</p>
-      <p>Brand: {{ product.brand }}</p>
-      <p>Price: ${{ product.price }}</p>
-      <p>Rating: {{ product.rating }}</p>
+<h1>Product catalog</h1>
+<div>
+    <div class="pagination">
+        <button (click)="onPageChange(pageIndex - 1)" [disabled]="pageIndex === 1">Previous</button>
+        <span>Page {{ pageIndex }}</span>
+        <button (click)="onPageChange(pageIndex + 1)">Next</button>
+      </div>
+      
+      <div>
+        <label for="pageSize">Page Size:</label>
+        <select id="pageSize" [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+
+      <button (click)="onPageChange(pageIndex - 1)" [disabled]="pageIndex === 1">Previous</button>
+      <button (click)="onPageChange(pageIndex + 1)">Next</button>
+</div>
+
+<!-- <div *ngFor="let product of products" class="product-card">
+    <img [src]="product.thumbnail" alt="Product Thumbnail" class="product-thumbnail">
+    <div class="product-details">
+      <div class="product-title">{{ product.title }}</div>
+      <div class="product-price">{{ product.price.current | currency }}</div>
+      <div class="product-rating">Rating: {{ product.rating }}</div>
+      <div class="product-brand">Brand: {{ product.brand }}</div>
+    </div>
+    <button (click)="addToCart(product)">Add to Cart</button>
+  </div> -->
+
+  
+
+
+  <div class="product-card" *ngFor="let product of products">
+    <img [src]="product.thumbnail" alt="Product Thumbnail" class="product-thumbnail">
+    <div class="product-details">
+      <div class="product-title">{{ product.title }}</div>
+      <div class="product-price">{{ product.price.current | currency }}</div>
+      <div class="product-rating">Rating: {{ product.rating }}</div>
+      <div class="product-brand">Brand: {{ product.brand }}</div>
+      <!-- Add more details if needed -->
     </div>
   </div>
-
+  
+  
