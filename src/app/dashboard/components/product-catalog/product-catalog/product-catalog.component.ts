@@ -12,27 +12,23 @@ export class ProductCatalogComponent {
   products: IProduct[] = [];
   pageIndex = 1;
   pageSize = 10;
+  loading = false; 
+
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
     this.loadProducts(); 
   }
 
-  // loadProducts(): void {
-  //   this.productService.getProducts(this.pageIndex, this.pageSize)
-  //   .subscribe(products => this.products = products);
-
-  //   console.log(this.products);
-      
-  // }
-
   loadProducts(): void {
+    this.loading = true;
     this.productService.getProducts(this.pageIndex, this.pageSize)
       .pipe(
         map((response: any) => response.products)
       )
       .subscribe(products => {
         this.products = products;
+        this.loading = false; 
         console.log(this.products); // Ensure that products are correctly assigned
       });
   }
