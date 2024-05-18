@@ -22,3 +22,9 @@ export interface IProduct {
     images: string[];
   }
 
+
+  export interface ICategory {
+    id: string;
+    name: string;
+    image: string;
+  }
