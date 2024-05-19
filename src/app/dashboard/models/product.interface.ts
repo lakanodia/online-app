@@ -28,3 +28,13 @@ export interface IProduct {
     name: string;
     image: string;
   }
+
+
+  export interface CartItem {
+    totalPrice: number;
+    productId: string;
+    title: string;
+    price: number;
+    quantity: number;
+    thumbnail: string;
+  }

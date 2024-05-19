@@ -13,7 +13,7 @@ export class ItemDetailsComponent  implements OnInit {
   activeTab: string = 'details';
   @ViewChild(ReviewDialogComponent) reviewDialog!: ReviewDialogComponent;
 
-   constructor(private route: ActivatedRoute, private itemDetailService: ItemDetailsService, private router: Router,){
+   constructor(private route: ActivatedRoute, private itemDetailService: ItemDetailsService, private router: Router){
 
    }
 

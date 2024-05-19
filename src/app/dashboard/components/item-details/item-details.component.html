@@ -1,4 +1,9 @@
+<a routerLink="/cart">Cart Management</a>
+
+
 <div *ngIf="item">
+
+
     <div class="item-image">
         <img [src]="item.thumbnail" alt="Item Image">
       </div>
@@ -12,6 +17,8 @@
     <button (click)="goBack()">Back to Products Catalog</button> 
 
   </div>
+
+
 
   <app-review-dialog (reviewSubmitted)="handleReview($event)"></app-review-dialog>
 
