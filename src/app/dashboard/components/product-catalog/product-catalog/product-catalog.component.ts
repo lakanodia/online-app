@@ -16,13 +16,17 @@ export class ProductCatalogComponent {
   loading = false; 
   searchQuery: string = '';
 
+  minPrice!: number;
+  maxPrice!: number; 
+
   categoryNames: string[] = [];
   brands: string[] = [];
+
 
   selectedCategory: string = '';
   selectedBrand: string = '';
   selectedPriceRange: string = '';
-  selectedRating: number = 0;
+  selectedRating: number | null = null; 
   constructor(private productService: ProductsService) {}
 
   ngOnInit(): void {
@@ -83,26 +87,53 @@ export class ProductCatalogComponent {
   }
 
 
+
   clearFilters(): void {
     this.selectedCategory = '';
     this.selectedBrand = '';
     this.selectedPriceRange = '';
-    this.selectedRating = 0;
+    this.selectedRating = null;
     this.products = [...this.originalProducts];
   }
 
+
   applyFilters(): void {
-    this.products = this.originalProducts.filter(product => {
-      if (this.selectedCategory) {
-        return product.category.name === this.selectedCategory;
-      }else if(this.selectedBrand){
-        return product.brand === this.selectedBrand;
-      }else{
-        return true;
-      }
-    });
-  }
+    let filteredProducts = [...this.originalProducts];
   
+    // Apply category filter
+    if (this.selectedCategory) {
+      filteredProducts = filteredProducts.filter(product => product.category.name === this.selectedCategory);
+    }
+
+    // Apply rating filter if not null
+    if (this.selectedRating !== null) {
+      console.log(this.selectedRating);
+      
+      filteredProducts = filteredProducts.filter(product => product.rating === this.selectedRating);
+    }
+  
+    // Apply brand filter
+    if (this.selectedBrand) {
+      filteredProducts = filteredProducts.filter(product => product.brand === this.selectedBrand);
+    }
+  
+    // Apply min/max price filter
+    if (this.minPrice && this.maxPrice) {
+      filteredProducts = filteredProducts.filter(product => 
+        product.price.current >= this.minPrice && product.price.current <= this.maxPrice
+      );
+    }
+    
+    // Apply search query filter
+    if (this.searchQuery) {
+      filteredProducts = filteredProducts.filter(product => 
+        product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    }
+  
+    this.products = filteredProducts;
+  }
+    
   
 
   loadCategories(): void {
