@@ -4,13 +4,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProductCatalogComponent } from './components/product-catalog/product-catalog/product-catalog.component';
 import { FormsModule } from '@angular/forms';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { CartManagementComponent } from './components/cart-management/cart-management.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ProductCatalogComponent
+    ProductCatalogComponent,
+    ItemDetailsComponent,
+    CartManagementComponent
   ],
   imports: [
     DashboardRoutingModule,

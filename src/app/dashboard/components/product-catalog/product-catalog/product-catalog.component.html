@@ -90,6 +90,7 @@
       <div class="product-brand">Brand: {{ product.brand }}</div>
       <button (click)="addToCart(product._id, 1)">Add to Cart</button>
     </div>
+    <a [routerLink]="['/items', product._id]">View Details</a>
   </div>
 </div>  
 </ng-template>
