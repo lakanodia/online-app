@@ -16,10 +16,8 @@
     <button (click)="openReviewDialog()">Review</button>
     <button (click)="goBack()">Back to Products Catalog</button> 
     <button (click)="addToCart(item)">Add to Cart</button> <!-- Add to Cart button -->
-
+    
   </div>
-
-
 
   <app-review-dialog (reviewSubmitted)="handleReview($event)"></app-review-dialog>
 

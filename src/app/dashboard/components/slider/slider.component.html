@@ -1,0 +1,23 @@
+<div class="slider">
+    <div class="slider-content">
+        <div class="slider-text">
+            <h1>Leptops, Phones, Watches</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi et obcaecati maiores voluptatibus omnis at, reprehenderit odio blanditiis distinctio cumque?</p>
+            <button>
+                <a href="tel:123-456-7890">Contact Us</a>
+            </button>
+        </div>
+        <div class="slider-image">
+            <img [src]="images[currentIndex]" alt="Slide" class="slide">
+        </div>
+    </div>
+
+    <div class="slider-buttons">
+        <button (click)="prevSlide()">Previous</button>
+        <button (click)="nextSlide()">Next</button>
+    </div>
+</div>
+
+
+
+  

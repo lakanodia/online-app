@@ -61,13 +61,9 @@ export class ProductCatalogComponent {
       });
   }
 
-  addToCart2(productId: string, quantity: number): void {
-    this.productService.addToCart(productId, quantity).subscribe(() => {
-    });
-  }
-
 
   addToCart(item: IProduct): void {
+    console.log('Adding item to cart:', item);
     const cartItem = {
       productId: item._id,
       title: item.title,
@@ -76,7 +72,7 @@ export class ProductCatalogComponent {
       thumbnail: item.thumbnail,
       totalPrice: item.price.current
     };
-    this.cartService.addToCart(cartItem).subscribe(() => {
+    this.cartService.addToCart(cartItem).subscribe((e) => {
       // Handle success (e.g., show a notificat on)
     }, error => {
       console.error('Error adding item to cart:', error);

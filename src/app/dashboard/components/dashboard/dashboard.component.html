@@ -1,4 +1,35 @@
-<h2>Welcome to the Dashboard!</h2>
-<button (click)="signOut()">Sign out</button>
+
+<header class="header_section" >
+    <div class="header-div">
+        <img class="header-logo" src="https://cdn-icons-png.freepik.com/256/4257/4257812.png?semt=ais_hybrid" alt="logo">
+        <nav class="header-nav">
+            <ul class="header-ul">
+                <li class="header-list">Home</li>
+                <li class="header-list">Products</li>
+                <li class="header-list">About</li>
+                <li class="header-list">Cart</li>
+                <li class="header-list"> <button (click)="signOut()">Sign out</button></li>
+                <li class="header-list">
+                    <a routerLink="/cart">
+                        <i class="fa-solid fa-cart-shopping"></i> 
+                        Cart
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<section class="section-slider">
+
+    <div class="section-main-div">
+        <app-slider></app-slider>
+    </div>
+</section>
+
 
 <app-product-catalog></app-product-catalog>
+
+
+<footer>Footer</footer>

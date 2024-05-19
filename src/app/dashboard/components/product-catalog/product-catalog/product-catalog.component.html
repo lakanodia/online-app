@@ -1,9 +1,11 @@
 <h1>Product catalog</h1>
+<a routerLink="/cart">Cart Management</a>
 
 <div *ngIf="loading; else productsContent"> <!-- Display loading indicator if loading is true -->
     <!-- Add your loading indicator here (e.g., spinner, progress bar) -->
     Loading...
 </div>
+
 
 
 
@@ -67,14 +69,12 @@
         <span>Page {{ pageIndex }}</span>
         <button (click)="onPageChange(pageIndex + 1)" [disabled]="products.length === 0">Next</button>
     </div>
-    
     <div>
         <label for="pageSize">Page Size:</label>
         <select id="pageSize" [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)"  [disabled]="products.length === 0">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="50">50</option>
-        <!-- Add more options as needed -->
         </select>
     </div>
 </div>
@@ -94,7 +94,6 @@
   </div>
 </div>  
 
-<a routerLink="/cart">Cart Management</a>
 </ng-template>
 
 <ng-template #noProductsMessage>

@@ -17,9 +17,7 @@ export class CartService {
   }
 
   addToCart(item: CartItem): Observable<void> {
-    const existingItem = this.cartItems.find(cartItem => cartItem.productId === item.productId);
-    console.log(this.cartItems);
-    
+    const existingItem = this.cartItems.find(cartItem => cartItem.productId === item.productId);    
     if (existingItem) {
       existingItem.quantity += item.quantity;
     } else {
