@@ -1,0 +1,22 @@
+<!-- review-dialog.component.html -->
+<div class="modal" *ngIf="isOpen">
+    <div class="modal-content">
+      <span class="close" (click)="close()">&times;</span>
+      <h2>Write a Review</h2>
+      <form (ngSubmit)="submitReview()">
+        <label for="rating">Rating:</label>
+        <select id="rating" [(ngModel)]="review.rating" name="rating" required>
+          <option *ngFor="let r of [1, 2, 3, 4, 5]" [value]="r">{{ r }}</option>
+        </select>
+  
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" [(ngModel)]="review.firstName" name="firstName" required>
+  
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" [(ngModel)]="review.lastName" name="lastName" required>
+  
+        <button type="submit">OK</button>
+      </form>
+    </div>
+  </div>
+  

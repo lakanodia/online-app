@@ -1,8 +1,18 @@
 <div *ngIf="item">
+    <div class="item-image">
+        <img [src]="item.thumbnail" alt="Item Image">
+      </div>
     <h2>{{ item.title }}</h2> <br>
     <p>Price: {{ item.price.amount }} {{ item.price.currency }}</p>
     <p>Description: {{ item.description }}</p>
-    <!-- Add more details as needed -->
-    <!-- Add more details as needed -->
+    <p>Brand: {{ item.brand }}</p>
+    <p>Stock: {{ item.stock }}</p>
+    <!-- <button >Add to Cart</button> -->
+    <button (click)="openReviewDialog()">Review</button>
+    <button (click)="goBack()">Back to Products Catalog</button> 
+
   </div>
+
+  <app-review-dialog (reviewSubmitted)="handleReview($event)"></app-review-dialog>
+
   

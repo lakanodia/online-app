@@ -6,6 +6,7 @@ import { ProductCatalogComponent } from './components/product-catalog/product-ca
 import { FormsModule } from '@angular/forms';
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { CartManagementComponent } from './components/cart-management/cart-management.component';
+import { ReviewDialogComponent } from './modals/review-dialog/review-dialog.component';
 
 
 
@@ -14,7 +15,8 @@ import { CartManagementComponent } from './components/cart-management/cart-manag
     DashboardComponent,
     ProductCatalogComponent,
     ItemDetailsComponent,
-    CartManagementComponent
+    CartManagementComponent,
+    ReviewDialogComponent
   ],
   imports: [
     DashboardRoutingModule,
