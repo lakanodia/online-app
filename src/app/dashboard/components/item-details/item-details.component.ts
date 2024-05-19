@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemDetailsService } from '../../services/item-details.service';
 import { ReviewDialogComponent } from '../../modals/review-dialog/review-dialog.component';
+import { CartService } from '../../services/cart.service';
+import { IProduct } from '../../models/product.interface';
 
 @Component({
   selector: 'app-item-details',
@@ -13,7 +15,10 @@ export class ItemDetailsComponent  implements OnInit {
   activeTab: string = 'details';
   @ViewChild(ReviewDialogComponent) reviewDialog!: ReviewDialogComponent;
 
-   constructor(private route: ActivatedRoute, private itemDetailService: ItemDetailsService, private router: Router){
+   constructor(private route: ActivatedRoute, 
+    private itemDetailService: ItemDetailsService, 
+    private router: Router,
+    private cartService: CartService ){
 
    }
 
@@ -33,8 +38,22 @@ export class ItemDetailsComponent  implements OnInit {
   openReviewDialog(): void { // Ensure this method exists
     this.reviewDialog.open();
   }
-  addToCart(){
 
+
+  addToCart(item: IProduct): void {
+    const cartItem = {
+      productId: item._id,
+      title: item.title,
+      price: item.price.current,
+      quantity: 1, // Default quantity is 1
+      thumbnail: item.thumbnail,
+      totalPrice: 1
+    };
+    this.cartService.addToCart(cartItem).subscribe(() => {
+      // Handle success (e.g., show a notificat on)
+    }, error => {
+      console.error('Error adding item to cart:', error);
+    });
   }
 
   handleReview(review: any): void {

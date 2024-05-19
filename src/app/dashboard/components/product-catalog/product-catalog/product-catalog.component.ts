@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ICategory, IProduct } from '../../../models/product.interface';
 import { ProductsService } from '../../../services/products.service';
 import { map } from 'rxjs';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-product-catalog',
@@ -27,7 +28,7 @@ export class ProductCatalogComponent {
   selectedBrand: string = '';
   selectedPriceRange: string = '';
   selectedRating: number | null = null; 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.loadBrands();
@@ -60,10 +61,28 @@ export class ProductCatalogComponent {
       });
   }
 
-  addToCart(productId: string, quantity: number): void {
+  addToCart2(productId: string, quantity: number): void {
     this.productService.addToCart(productId, quantity).subscribe(() => {
     });
   }
+
+
+  addToCart(item: IProduct): void {
+    const cartItem = {
+      productId: item._id,
+      title: item.title,
+      price: item.price.current,
+      quantity: 1, // Default quantity is 1
+      thumbnail: item.thumbnail,
+      totalPrice: item.price.current
+    };
+    this.cartService.addToCart(cartItem).subscribe(() => {
+      // Handle success (e.g., show a notificat on)
+    }, error => {
+      console.error('Error adding item to cart:', error);
+    });
+  }
+
 
   onPageChange(newPageIndex: number): void {
     if (newPageIndex < 1) {

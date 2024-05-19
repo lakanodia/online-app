@@ -88,7 +88,7 @@
       <div class="product-rating">Rating: {{ product.rating }}</div>
       <div class="product-rating">Stock: {{ product.stock }}</div>
       <div class="product-brand">Brand: {{ product.brand }}</div>
-      <button (click)="addToCart(product._id, 1)">Add to Cart</button>
+      <button (click)="addToCart(product)">Add to Cart</button>
     </div>
     <a [routerLink]="['/items', product._id]">View Details</a>
   </div>

@@ -7,22 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class CartService {
   private cartItems: CartItem[] = [
-    {
-      productId: '1',
-      title: 'Product 1',
-      price: 100,
-      quantity: 1,
-      thumbnail: 'https://via.placeholder.com/150',
-      totalPrice: 100
-    },
-    {
-      productId: '2',
-      title: 'Product 2',
-      price: 200,
-      quantity: 1,
-      thumbnail: 'https://via.placeholder.com/150',
-      totalPrice: 200
-    }
+
   ];
   constructor() { }
 
@@ -33,6 +18,8 @@ export class CartService {
 
   addToCart(item: CartItem): Observable<void> {
     const existingItem = this.cartItems.find(cartItem => cartItem.productId === item.productId);
+    console.log(this.cartItems);
+    
     if (existingItem) {
       existingItem.quantity += item.quantity;
     } else {
