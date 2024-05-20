@@ -8,6 +8,7 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { CartManagementComponent } from './components/cart-management/cart-management.component';
 import { ReviewDialogComponent } from './modals/review-dialog/review-dialog.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 
 
@@ -18,7 +19,8 @@ import { SliderComponent } from './components/slider/slider.component';
     ItemDetailsComponent,
     CartManagementComponent,
     ReviewDialogComponent,
-    SliderComponent
+    SliderComponent,
+    FooterComponent
   ],
   imports: [
     DashboardRoutingModule,

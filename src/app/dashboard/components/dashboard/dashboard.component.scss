@@ -1,7 +1,10 @@
+
+
+
 .header_section{
-    background-color: #ffffff;
+    background-color: #242424;
     padding: 10px;
-    color: #3a4468;
+    color: #fcfcfc;
     .header-div{
         display: flex;
         justify-content: space-between;
@@ -20,18 +23,39 @@
                 font-size: 19px;
                 cursor: pointer;
                 a{
-                    color: #3a4468;
-                    i{
-                        font-size: 15px;
-                        margin-right: 5px;
-                    }
-                    text-decoration: none;
-                }
+                    color: #ffffff;
+                      i{
+                          font-size: 15px;
+                          margin-right: 5px;
+                      }
+                      text-decoration: none;
+                      transition: 0.4s;
+                  }
+                  a:hover{
+                    color: #ffa200;
+                  }
             }
            } 
         }
-
     }
+}
+
+//BUTTON 3
+.third {
+    transition: all 150ms ease-in-out;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #ffa200;
+    font-size: 18px;
+}
+
+.third:hover{
+    background-color: #e8e8e8;
+    box-shadow: 3px 2px 15px #fcab20;
+    border: #fcab20;
 }
 
 .section-slider{
@@ -42,3 +66,7 @@
         height: 100%;
     }
 }
+
+
+
+

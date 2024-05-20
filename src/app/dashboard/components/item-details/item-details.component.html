@@ -1,24 +1,42 @@
-<a routerLink="/cart">Cart Management</a>
-
-
-<div *ngIf="item">
-
-
-    <div class="item-image">
-        <img [src]="item.thumbnail" alt="Item Image">
-      </div>
-    <h2>{{ item.title }}</h2> <br>
-    <p>Price: {{ item.price.amount }} {{ item.price.currency }}</p>
-    <p>Description: {{ item.description }}</p>
-    <p>Brand: {{ item.brand }}</p>
-    <p>Stock: {{ item.stock }}</p>
-    <!-- <button >Add to Cart</button> -->
-    <button (click)="openReviewDialog()">Review</button>
-    <button (click)="goBack()">Back to Products Catalog</button> 
-    <button (click)="addToCart(item)">Add to Cart</button> <!-- Add to Cart button -->
-    
+<!-- <a routerLink="/cart" class="cart-link">Cart Management</a> -->
+<header class="header_section" >
+  <div class="header-div">
+      <img class="header-logo" src="https://cdn-icons-png.freepik.com/256/4257/4257812.png?semt=ais_hybrid" alt="logo">
+      <nav class="header-nav">
+          <ul class="header-ul">
+              <li class="header-list">Home</li>
+              <li class="header-list">Products</li>
+              <li class="header-list">About</li>
+              <li class="header-list"> <button (click)="signOut()"  class="third">Sign out</button></li>
+              <li class="header-list">
+                  <a routerLink="/cart">
+                      <i class="fa-solid fa-cart-shopping"></i> 
+                      Cart
+                  </a>
+              </li>
+          </ul>
+      </nav>
   </div>
+</header>
 
-  <app-review-dialog (reviewSubmitted)="handleReview($event)"></app-review-dialog>
+<div *ngIf="item" class="product-detail-container">
+  <div class="item-image">
+    <img [src]="item.thumbnail" alt="Item Image">
+  </div>
+  <div class="item-details">
+    <h2>{{ item.title }}</h2>
+    <p class="price">Price: {{ item.price.current }} {{ item.price.currency }}</p>
+    <p class="description">Description: {{ item.description }}</p>
+    <p class="brand">Brand: {{ item.brand }}</p>
+    <p class="stock">Stock: {{ item.stock }}</p>
+    <div class="button-group">
+      <button (click)="openReviewDialog()">Review</button>
+      <button (click)="addToCart(item)">Add to Cart</button>
+      <button (click)="goBack()">Back to Products Catalog</button>
+    </div>
+  </div>
+</div>
 
-  
+<app-review-dialog (reviewSubmitted)="handleReview($event)"></app-review-dialog>
+
+<app-footer></app-footer>

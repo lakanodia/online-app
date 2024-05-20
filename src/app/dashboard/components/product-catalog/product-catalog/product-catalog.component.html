@@ -1,100 +1,157 @@
-<h1>Product catalog</h1>
-<a routerLink="/cart">Cart Management</a>
+<h1 class="product-title">Our Products</h1>
+<!-- <a routerLink="/cart">Cart Management</a> -->
 
 <div *ngIf="loading; else productsContent"> <!-- Display loading indicator if loading is true -->
     <!-- Add your loading indicator here (e.g., spinner, progress bar) -->
     Loading...
 </div>
 
-
-
-
 <ng-template #productsContent>
 
-    <div>
-        <label for="minPrice">Min Price:</label>
-        <input type="number" id="minPrice" [(ngModel)]="minPrice" (change)="applyFilters()">
-    </div>
-    <div>
-        <label for="maxPrice">Max Price:</label>
-        <input type="number" id="maxPrice" [(ngModel)]="maxPrice" (change)="applyFilters()">
-    </div>
-
-    <div>
-        <input type="text" [(ngModel)]="searchQuery" placeholder="Search by name...">
-        <button (click)="search()">Search</button>
-    </div>
-
-
-<div class="sidebar">
-    <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
-        <option value="">All Categories</option>
-        <option *ngFor="let categoryName of categoryNames" [value]="categoryName">{{ categoryName }}</option>
-      </select>
-
-      <select [(ngModel)]="selectedBrand" (change)="applyFilters()">
-        <option value="">All Brands</option>
-        <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
-      </select>
-
-
-      <div>
-        <input type="radio" name="ratingFilter" id="ratingFilter0" [(ngModel)]="selectedRating" [value]="0" (change)="applyFilters()">
-        <label for="ratingFilter0">0</label>
-      
-        <input type="radio" name="ratingFilter" id="ratingFilter1" [(ngModel)]="selectedRating" [value]="1" (change)="applyFilters()">
-        <label for="ratingFilter1">1</label>
-      
-        <input type="radio" name="ratingFilter" id="ratingFilter2" [(ngModel)]="selectedRating" [value]="2" (change)="applyFilters()">
-        <label for="ratingFilter2">2</label>
-      
-        <input type="radio" name="ratingFilter" id="ratingFilter3" [(ngModel)]="selectedRating" [value]="3" (change)="applyFilters()">
-        <label for="ratingFilter3">3</label>
-      
-        <input type="radio" name="ratingFilter" id="ratingFilter4" [(ngModel)]="selectedRating" [value]="4" (change)="applyFilters()">
-        <label for="ratingFilter4">4</label>
-      
-        <input type="radio" name="ratingFilter" id="ratingFilter5" [(ngModel)]="selectedRating" [value]="5" (change)="applyFilters()">
-        <label for="ratingFilter5">5</label>
+  <div class="search-main-div">
+    <div class="price-filter-container">
+      <div class="price-filter">
+        <!-- <label for="minPrice">Min Price:</label> -->
+        <input type="number" id="minPrice" [(ngModel)]="minPrice" (change)="applyFilters()" placeholder="Min Price">
       </div>
-      
+      <div class="price-filter">
+        <!-- <label for="maxPrice">Max Price:</label> -->
+        <input type="number" id="maxPrice" [(ngModel)]="maxPrice" (change)="applyFilters()" placeholder="Max Price">
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search by name..." class="search-input">
+      <button (click)="search()" class="search-button">Search</button>
+    </div>
+  </div>
 
 
-    <button (click)="clearFilters()">Clear Filters</button>
+<div class="sidebar" style="display: flex;">
+
+  <div>
+    <select [(ngModel)]="selectedCategory" (change)="applyFilters()" class="filter-select">
+      <option value="">All Categories</option>
+      <option *ngFor="let categoryName of categoryNames" [value]="categoryName">{{ categoryName }}</option>
+    </select>
+  </div>
+
+  <div>
+    <select [(ngModel)]="selectedBrand" (change)="applyFilters()" class="filter-select">
+      <option value="">All Brands</option>
+      <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+    </select>
+  </div>
+
+<div>
+  <div class="rating-filter" >
+    <input type="radio" name="ratingFilter" id="ratingFilter0" [(ngModel)]="selectedRating" [value]="0" (change)="applyFilters()">
+    <label for="ratingFilter0">
+      <i class="fas fa-star"></i> 0
+    </label>
+
+    <input type="radio" name="ratingFilter" id="ratingFilter1" [(ngModel)]="selectedRating" [value]="1" (change)="applyFilters()">
+    <label for="ratingFilter1">
+      <i class="fas fa-star"></i>
+    </label>
+
+    <input type="radio" name="ratingFilter" id="ratingFilter2" [(ngModel)]="selectedRating" [value]="2" (change)="applyFilters()">
+    <label for="ratingFilter2">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </label>
+
+    <input type="radio" name="ratingFilter" id="ratingFilter3" [(ngModel)]="selectedRating" [value]="3" (change)="applyFilters()">
+    <label for="ratingFilter3">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </label>
+
+    <input type="radio" name="ratingFilter" id="ratingFilter4" [(ngModel)]="selectedRating" [value]="4" (change)="applyFilters()">
+    <label for="ratingFilter4">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </label>
+
+    <input type="radio" name="ratingFilter" id="ratingFilter5" [(ngModel)]="selectedRating" [value]="5" (change)="applyFilters()">
+    <label for="ratingFilter5">
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    </label>
+  </div>
+
+
 </div>
+<button (click)="clearFilters()" class="clear-filters-button">Clear Filters</button>
+
+
+</div>
+
   
 <div>
-    <div class="pagination">
-        <button (click)="onPageChange(pageIndex - 1)" [disabled]="pageIndex === 1"  >Previous</button>
-        <span>Page {{ pageIndex }}</span>
-        <button (click)="onPageChange(pageIndex + 1)" [disabled]="products.length === 0">Next</button>
-    </div>
+
     <div>
         <label for="pageSize">Page Size:</label>
         <select id="pageSize" [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)"  [disabled]="products.length === 0">
-            <option value="10">10</option>
+            <option value="8">8</option>
             <option value="20">20</option>
             <option value="50">50</option>
         </select>
     </div>
 </div>
 
-<div *ngIf="products.length > 0; else noProductsMessage">
+
+
+
+
+
+
+
+<a ></a>
+<div class="mian-product-block" *ngIf="products.length > 0; else noProductsMessage" style="display: flex; flex-wrap: wrap;" >
   <div class="product-card" *ngFor="let product of products">
-    <img [src]="product.thumbnail" alt="Product Thumbnail" class="product-thumbnail">
-    <div class="product-details">
-      <div class="product-title">{{ product.title }}</div>
-      <div class="product-price">{{ product.price.current | currency }}</div>
-      <div class="product-rating">Rating: {{ product.rating }}</div>
-      <div class="product-rating">Stock: {{ product.stock }}</div>
-      <div class="product-brand">Brand: {{ product.brand }}</div>
-      <button (click)="addToCart(product)">Add to Cart</button>
+    <div [routerLink]="['/items', product._id]" style="cursor: pointer;">
+      <div class="badge"><a [routerLink]="['/items', product._id]">View Details</a></div>
+      <div class="product-tumb">
+        <img [src]="product.thumbnail" alt="Product Thumbnail" class="product-thumbnail">
+      </div>
     </div>
-    <a [routerLink]="['/items', product._id]">View Details</a>
+      <div class="product-details">
+        <span class="product-catagory">Brand: {{ product.brand }}</span>
+  
+        <h4>{{ product.title }}</h4>
+        <div class="product-rating">Rating: {{ product.rating }}</div>
+        <div class="product-rating">Stock: {{ product.stock }}</div>
+        <div class="product-bottom-details">
+          <div class="product-price">{{ product.price.current | currency }}</div>
+          <div class="product-links">
+            <button (click)="addToCart(product)">
+              <i class="fa fa-shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+  
+
   </div>
-</div>  
+</div>
+
+<div class="pagination">
+  <button (click)="onPageChange(pageIndex - 1)" [disabled]="pageIndex === 1"  >Previous</button>
+  <span>Page {{ pageIndex }}</span>
+  <button (click)="onPageChange(pageIndex + 1)" [disabled]="products.length === 0">Next</button>
+</div>
+
 
 </ng-template>
+
 
 <ng-template #noProductsMessage>
     <div class="no-products-message">

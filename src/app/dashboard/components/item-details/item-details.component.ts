@@ -4,6 +4,7 @@ import { ItemDetailsService } from '../../services/item-details.service';
 import { ReviewDialogComponent } from '../../modals/review-dialog/review-dialog.component';
 import { CartService } from '../../services/cart.service';
 import { IProduct } from '../../models/product.interface';
+import { AuthService } from '../../../auth/service/auth.service';
 
 @Component({
   selector: 'app-item-details',
@@ -18,7 +19,8 @@ export class ItemDetailsComponent  implements OnInit {
    constructor(private route: ActivatedRoute, 
     private itemDetailService: ItemDetailsService, 
     private router: Router,
-    private cartService: CartService ){
+    private cartService: CartService ,
+    private authService: AuthService){
 
    }
 
@@ -28,6 +30,14 @@ export class ItemDetailsComponent  implements OnInit {
       this.getItemDetails(itemId);
     });
   }
+
+  signOut(): void {
+    // Remove token from localStorage
+    this.authService.removeToken();
+    // Redirect to login page
+    this.router.navigate(['/login']);
+  }
+
 
   getItemDetails(itemId: string): void {
     this.itemDetailService.getItemById(itemId).subscribe((item: any) => {

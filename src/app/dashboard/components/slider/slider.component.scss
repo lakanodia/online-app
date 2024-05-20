@@ -35,5 +35,103 @@
 }
 
 
+/* Next Button */
+.arrow-next {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border: solid 6px #ffc353;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all .2s linear;
+  }
+  
+  .arrow-next:before, .arrow-next:after {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 10%;
+    top: 41%;
+    left: 55%;
+    background: #ffc353;
+    z-index: 2;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all .2s linear;
+  }
+  
+  .arrow-next:after {
+    z-index: 3;
+    top: 59%;
+    left: 55%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .arrow-next:hover {
+    border: solid 8px #ffa600;
+  }
+  
+  .arrow-next:hover:before, .arrow-next:hover:after {
+    background: #ffa600;
+  }
+  
+  .arrow-next:active {
+    border: solid 8px #ffa600;
+  }
+  
+  .arrow-next:active:before, .arrow-next:active:after {
+    background: #ffa600;
+  }
+  
+  /* Previous Button */
+  .arrow-prev {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border: solid 6px #ffc353;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all .2s linear;
+  }
+  
+  .arrow-prev:before, .arrow-prev:after {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 10%;
+    top: 41%;
+    left: 45%; /* Adjusted to position for left arrow */
+    background: #ffc353;
+    z-index: 2;
+    transform: translate(-50%, -50%) rotate(-45deg); /* Rotated in opposite direction */
+    transition: all .2s linear;
+  }
+  
+  .arrow-prev:after {
+    z-index: 3;
+    top: 59%;
+    left: 45%; /* Adjusted to position for left arrow */
+    transform: translate(-50%, -50%) rotate(45deg); /* Rotated in opposite direction */
+  }
+  
+  .arrow-prev:hover {
+    border: solid 8px #ffa600;
+  }
+  
+  .arrow-prev:hover:before, .arrow-prev:hover:after {
+    background: #ffa600;
+  }
+  
+  .arrow-prev:active {
+    border: solid 8px #ffa600;
+  }
+  
+  .arrow-prev:active:before, .arrow-prev:active:after {
+    background: #ffa600;
+  }
+
 
 

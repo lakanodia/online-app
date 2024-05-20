@@ -13,7 +13,7 @@ export class ProductCatalogComponent {
   originalProducts: IProduct[] = [];
   products: IProduct[] = [];
   pageIndex = 1;
-  pageSize = 10;
+  pageSize = 8;
   loading = false; 
   searchQuery: string = '';
 

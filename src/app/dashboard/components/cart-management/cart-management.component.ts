@@ -3,6 +3,7 @@ import { CartItem } from '../../models/product.interface';
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { AuthService } from '../../../auth/service/auth.service';
 
 @Component({
   selector: 'app-cart-management',
@@ -12,12 +13,20 @@ import { Observable, of } from 'rxjs';
 export class CartManagementComponent implements OnInit{
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService, private router: Router){}
+  constructor(private cartService: CartService, private router: Router, private authService: AuthService){}
 
   ngOnInit(): void {
     this.loadCartItems();
   }
 
+
+
+  signOut(): void {
+    // Remove token from localStorage
+    this.authService.removeToken();
+    // Redirect to login page
+    this.router.navigate(['/login']);
+  }
 
   loadCartItems(): void {
     this.cartService.getCartItems().subscribe(items => {

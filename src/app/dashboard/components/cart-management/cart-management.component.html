@@ -1,4 +1,26 @@
-<div *ngIf="cartItems.length > 0; else emptyCartMessage">
+
+
+<header class="header_section" >
+    <div class="header-div">
+        <img class="header-logo" src="https://cdn-icons-png.freepik.com/256/4257/4257812.png?semt=ais_hybrid" alt="logo">
+        <nav class="header-nav">
+            <ul class="header-ul">
+                <li class="header-list"  (click)="goBack()">Home</li>
+                <li class="header-list">Products</li>
+                <li class="header-list">About</li>
+                <li class="header-list"> <button (click)="signOut()" class="third">Sign out</button></li>
+                <li class="header-list">
+                    <a routerLink="/cart">
+                        <i class="fa-solid fa-cart-shopping"></i> 
+                        Cart
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div *ngIf="cartItems.length > 0; else emptyCartMessage" class="cart-container">
     <div *ngFor="let item of cartItems" class="cart-item">
       <img [src]="item.thumbnail" alt="Item Thumbnail" class="item-thumbnail">
       <div class="item-details">
@@ -7,17 +29,21 @@
         <p>Quantity: 
           <input type="number" [(ngModel)]="item.quantity" (change)="updateItemQuantity(item, item.quantity)" min="1">
         </p>
-        <p>Total Price: {{ item.totalPrice | currency }}</p> 
+        <p>Total Price: {{ item.totalPrice | currency }}</p>
         <button (click)="removeFromCart(item.productId)">Remove</button>
       </div>
     </div>
-    <button (click)="clearCart()">Clear Cart</button>
+    <button (click)="clearCart()" class="clear-cart-button">Clear Cart</button>
+    <button (click)="goBack()" class="back-button">Back to Products Catalog</button>
   </div>
+  
+  <ng-template #emptyCartMessage class="empty-cart-message">
+    <p class="empty-cart-message">Your cart is empty.</p>
+    <button  (click)="goBack()" class="back-button">Back to Products Catalog</button>
 
-  <button (click)="goBack()">Back to Products Catalog</button> 
+  </ng-template>
+
+ <app-footer></app-footer>
 
   
-  <ng-template #emptyCartMessage>
-    <p>Your cart is empty.</p>
-  </ng-template>
   
