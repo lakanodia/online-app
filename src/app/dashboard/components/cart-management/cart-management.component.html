@@ -38,8 +38,13 @@
   </div>
   
   <ng-template #emptyCartMessage class="empty-cart-message">
-    <p class="empty-cart-message">Your cart is empty.</p>
-    <button  (click)="goBack()" class="back-button">Back to Products Catalog</button>
+
+    <div class="empty-cart-container">
+        <p class="empty-cart-message">Your cart is empty.</p>
+        <button (click)="goBack()" class="back-button">Back to Products Catalog</button>
+    </div>
+    <!-- <p class="empty-cart-message">Your cart is empty.</p>
+    <button  (click)="goBack()" class="back-button">Back to Products Catalog</button> -->
 
   </ng-template>
 
